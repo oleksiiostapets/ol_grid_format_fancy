@@ -1,0 +1,21 @@
+{
+    "name": "oleksiiostapets/fancygrid",
+    "type": "library",
+    "description": "Fancy datetime field in Grid for Agile Toolkit",
+    "homepage": "https://github.com/alexeyostapets/ol_grid_format_fancy",
+    "keywords": ["atk4"],
+    "license": "AGPL",
+    "authors": [
+        {
+            "name": "Oleksii Ostapets",
+            "email": "oleksii.ostapets@gmail.com"
+        }
+    ],
+    "require": {
+        "atk4/atk4": ">=4.2",
+        "php": ">=5.3"
+    },
+    "autoload": {
+        "psr-0": { "oleksiiostapets\\fancyfrid": "lib" }
+    }
+}
