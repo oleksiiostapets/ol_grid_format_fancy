@@ -9,25 +9,34 @@
 namespace grid;
 class Controller_Grid_Format_fancy extends \AbstractController {
     function initField($dt,$now='now'){
-        $now=new DateTime($now);
-        $dt=new DateTime($dt);
+    }
+    function formatField($field){
+        $g=$this->owner;
+
+        if($g->current_row[$field] == '') {
+            return $g->current_row_html[$field] = '';
+        }
+
+        $now=new \DateTime('now');
+        $dt=new \DateTime(Date(DATE_ATOM,$g->current_row[$field]));
 
         $interval=$dt->diff($now);
         $rel=$dt>$now?'':' ago';
 
         if($interval->format('%a')){
-            return $dt->format($this->api->getConfig('locale/date','d/m/Y'));
+
+            return $g->current_row_html[$field] = $dt->format($this->api->getConfig('locale/date','d/m/Y'));
         }
 
         // Zero days, show fancy format
         $h=$interval->format('%h');
-        if($h>1)return $h.' hours'.$rel;
-        if($h)return 'a hour'.$rel;
+        if($h>1)return $g->current_row_html[$field] = $h.' hours'.$rel;
+        if($h)return $g->current_row_html[$field] = 'a hour'.$rel;
 
 
         $m=$interval->format('%i');
-        if($m>1)return $m.' minutes'.$rel;
+        if($m>1)return $g->current_row_html[$field] = $m.' minutes'.$rel;
 
-        return $dt>$now?'about a minute':'just now';
+        return $dt>$now?$g->current_row_html[$field] = 'about a minute' : $g->current_row_html[$field] = 'just now';
     }
 }
