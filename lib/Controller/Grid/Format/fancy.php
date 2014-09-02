@@ -6,7 +6,7 @@
    Due to date functions, this controller requries PHP5.3+
    */
 
-namespace grid;
+namespace fancygrid;
 class Controller_Grid_Format_fancy extends \AbstractController {
     function initField($dt,$now='now'){
     }
