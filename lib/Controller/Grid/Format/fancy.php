@@ -1,6 +1,6 @@
 <?php
 /*
-   Selection of utilities for making thinsg fancy 
+   Selection of utilities for making thinsg fancy
 
 
    Due to date functions, this controller requries PHP5.3+
@@ -18,7 +18,7 @@ class Controller_Grid_Format_fancy extends \AbstractController {
         }
 
         $now=new \DateTime('now');
-        $dt=new \DateTime(Date(DATE_ATOM,$g->current_row[$field]));
+        $dt=new \DateTime(Date(DATE_ATOM,$g->model[$field]));
 
         $interval=$dt->diff($now);
         $rel=$dt>$now?'':' ago';
